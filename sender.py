@@ -4,7 +4,6 @@ from tkinter import messagebox, scrolledtext
 import mysql.connector
 from mysql.connector import Error
 
-# الاتصال بقاعدة البيانات
 def connect_db():
     try:
         conn = mysql.connector.connect(
@@ -19,7 +18,6 @@ def connect_db():
         print(f"Error: {e}")
         return None
 
-# تحقق من صحة بيانات تسجيل الدخول
 def validate_login(username, password):
     conn = connect_db()
     if conn is None:
@@ -34,7 +32,6 @@ def validate_login(username, password):
         return password == result[0]
     return False
 
-# إرسال الرسائل للأرقام الموجودة في حقل معين
 def send_messages(phone_entry, message_entry):
     conn = connect_db()
     if conn is None:
@@ -61,7 +58,6 @@ def send_messages(phone_entry, message_entry):
 
     conn.close()
 
-# التحقق من تسجيل الدخول
 def check_login():
     global logged_in_user
     username = username_entry.get()
@@ -73,7 +69,6 @@ def check_login():
     else:
         messagebox.showerror("Login Error", "Invalid username or password")
 
-# إنشاء قائمة منبثقة لدعم النسخ/اللصق/القص
 def create_popup_menu(widget):
     menu = tk.Menu(widget, tearoff=0)
     menu.add_command(label="Cut", command=lambda: widget.event_generate("<<Cut>>"))
@@ -85,7 +80,6 @@ def create_popup_menu(widget):
 
     widget.bind("<Button-3>", show_popup)
 
-# إعداد واجهة تسجيل الدخول
 def show_login_screen():
     global username_entry, password_entry, login_frame
     login_frame = tk.Frame(root, bg='white')
@@ -104,7 +98,6 @@ def show_login_screen():
 
     tk.Label(login_frame, text="© All Rights Reserved For (khaled32r) 2024", bg='white', fg='grey', font=('Helvetica', 10)).pack(pady=10)
 
-# إعداد واجهة إرسال الرسائل
 def show_message_screen():
     global phone_entries, message_entries
     message_frame = tk.Frame(root, bg='white')
@@ -136,10 +129,9 @@ def show_message_screen():
     tk.Label(message_frame, text="© All Rights Reserved For (khaledalahmad32r) 2024", bg='white', fg='grey', font=('Helvetica', 10)).grid(row=5, columnspan=5, pady=10)
     tk.Label(message_frame, text="Created by khaled alahmad", bg='white', fg='grey', font=('Helvetica', 10)).grid(row=6, columnspan=5, pady=5)
 
-# إعداد واجهة المستخدم الرئيسية
 root = tk.Tk()
 root.title("WhatsApp Messaging App")
-root.geometry("1500x900")  # تكبير حجم النافذة
+root.geometry("1500x900")
 
 logged_in_user = None
 
