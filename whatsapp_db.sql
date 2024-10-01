@@ -60,7 +60,7 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `phone`, `message`, `sender`, `send_date`) VALUES
-(12, '+963969336070', 'hello', 'khaled', '2024-08-07 02:47:27'),
+(12, '000000000000', 'hello', 'khaled', '2024-08-07 02:47:27'),
 
 
 --
